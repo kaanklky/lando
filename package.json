@@ -82,15 +82,15 @@
     "grunt-shell": "^1.1.1",
     "matchdep": "^0.3.0",
     "mocha": "^4.1.0",
-    "npm-bump": "^0.0.23",
     "pkg": "^4.1.0"
   },
   "scripts": {
     "docs": "gitbook install && gitbook build && ./scripts/docs.js",
     "lint": "eslint bin/**/*.js lib/**/*.js plugins/**/*.js test/**/*.js scripts/**/**/*.js",
-    "release:major": "./scripts/bump.js patch",
-    "release:patch": "./scripts/bump.js patch",
-    "release:pre": "./scripts/bump.js prerelease",
+    "release:major": "./scripts/bump.js --stage=major",
+    "release:minor": "./scripts/bump.js --stage=minor",
+    "release:patch": "./scripts/bump.js --stage=patch",
+    "release:pre": "./scripts/bump.js --stage=prerelease",
     "serve": "gitbook install && ./scripts/docs.js && gitbook serve",
     "test:spec": "mocha",
     "test": "npm run lint && npm run test:spec"
