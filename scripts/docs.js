@@ -1,9 +1,10 @@
 #!/usr/bin/env node
+'use strict';
 
 const jsdoc2md = require('jsdoc-to-markdown');
 const fs = require('fs-extra');
 
-let fileMap = [
+const fileMap = [
   {src: 'lib/lando.js', dest: 'docs/dev/api/lando.md'},
   {src: 'lib/app.js', dest: 'docs/dev/api/app.md'},
   {src: 'lib/bootstrap.js', dest: 'docs/dev/api/bootstrap.md'},
@@ -29,6 +30,6 @@ let fileMap = [
 fileMap.map(function (obj) {
   return jsdoc2md.render({files: obj.src}).then(function(data) {
     console.log('writing ' + obj.dest + '...');
-    return fs.outputFile(obj.dest, data, (error) => { if (error) { throw error; }});
+    return fs.outputFile(obj.dest, data, function(error) { if (error) { throw error; } });
   });
 });
