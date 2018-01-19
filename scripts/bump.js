@@ -43,15 +43,15 @@ function expandGitCmd(cmd = []) {
 const pkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const newJson = bumpPkgJson(pkgJson, argv.stage);
 const commitCmd = ['commit', 'package.json', '-m', 'Release v' + newJson.version],
-  tagCmd = ['tag', '-a', 'v' + pkgJson.version, '-m', 'Version v' + newJson.version],
   pushBranchCmd = ['push', 'origin', currentBranch],
-  pushTagCmd = ['push', 'origin', 'v' + newJson.version];
+  pushTagCmd = ['push', 'origin', 'v' + newJson.version],
+  tagCmd = ['tag', '-a', 'v' + pkgJson.version, '-m', 'Version v' + newJson.version];
 
 /**
  * Do the stuff.
  */
 if (argv.dryRun) {
-  console.log('Dry-Run: Would have bumped version in package.json to: v' + newJson.version)
+  console.log('Dry-Run: Would have bumped version in package.json to: v' + newJson.version);
   return [commitCmd, tagCmd, pushBranchCmd, pushTagCmd].map(function(cmd) {
     return console.log('Dry-Run: Would have run: ' + expandGitCmd(cmd));
   });

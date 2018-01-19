@@ -53,8 +53,7 @@ var buildFiles = [
   'lib/**',
   'plugins/**',
   '*.json',
-  'config.yml',
-  'encloseConfig.js'
+  'config.yml'
 ];
 
 // Return our objects
